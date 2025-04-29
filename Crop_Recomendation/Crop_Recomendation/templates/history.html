@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction History</title>
+</head>
+<body>
+    <h1>Crop Prediction History</h1>
+    <table border="1">
+        <tr>
+            <th>N</th>
+            <th>P</th>
+            <th>K</th>
+            <th>Temperature</th>
+            <th>Humidity</th>
+            <th>pH</th>
+            <th>Rainfall</th>
+            <th>Recommended Crop</th>
+        </tr>
+        {% for record in historical_data %}
+        <tr>
+            <td>{{ record['N'] }}</td>
+            <td>{{ record['P'] }}</td>
+            <td>{{ record['K'] }}</td>
+            <td>{{ record['temperature'] }}</td>
+            <td>{{ record['humidity'] }}</td>
+            <td>{{ record['ph'] }}</td>
+            <td>{{ record['rainfall'] }}</td>
+            <td>{{ record['label'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

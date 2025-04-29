@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Recommendation</title>
+</head>
+<style>
+    .header{
+        text-align: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        background-color: burlywood;
+    }
+
+    .output{
+        text-align: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+</style>
+<body bgcolor="green" >
+    <div class="header">
+    <h1 >Crop Recommendation</h1>
+    <!-- <form action="{{ url_for('predict') }}" method="post">
+        <label for="N">Nitrogen (N):</label><input type="text" name="N" required><br>
+        <label for="P">Phosphorus (P):</label><input type="text" name="P" required><br>
+        <label for="K">Potassium (K):</label><input type="text" name="K" required><br>
+        <label for="temperature">Temperature (°C):</label><input type="text" name="temperature" required><br>
+        <label for="humidity">Humidity (%):</label><input type="text" name="humidity" required><br>
+        <label for="ph">pH:</label><input type="text" name="ph" required><br>
+        <label for="rainfall">Rainfall (mm):</label><input type="text" name="rainfall" required><br>
+        <button type="submit">Predict Crop</button>
+    </form> -->
+    </div>
+
+    <div class="output">
+    {% if prediction %}
+    <h2>Recommended Crop : {{  prediction }}</h2>
+    {% endif %}
+    </div>
+</body>
+</html>

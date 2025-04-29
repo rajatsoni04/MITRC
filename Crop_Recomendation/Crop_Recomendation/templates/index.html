@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crop Recommendation</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+        background: linear-gradient(to right, #e0f7fa, #80deea);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .navbar {
+        background-color: #00796b;
+    }
+
+    .navbar-brand,
+    .nav-link {
+        color: white !important;
+    }
+
+    .form-container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+        margin-top: 50px;
+    }
+
+    .btn-primary {
+        background-color: #00796b;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #004d40;
+    }
+
+    .prediction-result {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #1b5e20;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="/">Crop Recommender</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+      <!-- <li class="nav-item"><a class="nav-link" href="/project">Predict</a></li> -->
+      <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+      <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Centered Form -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6 form-container">
+      <h3 class="text-center mb-4">Enter Soil and Climate Details</h3>
+      <form action="{{ url_for('predict') }}" method="post">
+        <div class="form-group">
+          <label for="N">Nitrogen (N)</label>
+          <input type="text" class="form-control" name="N" required>
+        </div>
+        <div class="form-group">
+          <label for="P">Phosphorus (P)</label>
+          <input type="text" class="form-control" name="P" required>
+        </div>
+        <div class="form-group">
+          <label for="K">Potassium (K)</label>
+          <input type="text" class="form-control" name="K" required>
+        </div>
+        <div class="form-group">
+          <label for="temperature">Temperature (°C)</label>
+          <input type="text" class="form-control" name="temperature" required>
+        </div>
+        <div class="form-group">
+          <label for="humidity">Humidity (%)</label>
+          <input type="text" class="form-control" name="humidity" required>
+        </div>
+        <div class="form-group">
+          <label for="ph">pH</label>
+          <input type="text" class="form-control" name="ph" required>
+        </div>
+        <div class="form-group">
+          <label for="rainfall">Rainfall (mm)</label>
+          <input type="text" class="form-control" name="rainfall" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Predict Crop</button>
+      </form>
+
+      {% if prediction %}
+        <div class="prediction-result">Recommended Crop: {{ prediction }}</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
